@@ -1,6 +1,7 @@
 package com.example.deb8;
 
 import com.example.deb8.entity.User;
+import com.example.deb8.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
