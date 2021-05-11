@@ -1,10 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>deb8 Online</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
+
 <body>
-    <h1>Welcome to deb8 Online</h1>
+    <div class="container text-center">
+        <div>
+            <h1>Welcome to deb8 Online</h1>
+        </div>
+        <div>
+            <h3><a th:href="@{/register}">Register</a></h3>
+        </div>
+    </div>
 </body>
 </html>
