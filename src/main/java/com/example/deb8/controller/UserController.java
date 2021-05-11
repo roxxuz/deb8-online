@@ -29,7 +29,7 @@ public class UserController {
     public String processRegistration(User user) {
         userRepository.save(user);
 
-        return "registration_sucess";
+        return "registration_success";
     }
 
 }
