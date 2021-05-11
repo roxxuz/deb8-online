@@ -1,4 +1,4 @@
-package com.example.deb8;
+package com.example.deb8.repository;
 
 import com.example.deb8.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
