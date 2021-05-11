@@ -12,7 +12,7 @@
         <div>
             <h1>Sign up new user</h1>
         </div>
-        <form th:action="@{/register_process}" th:object="${user}" method="post" style="max-width:600px; margin:auto; margin-top:100px;">
+        <form th:action="@{/process_registration}" th:object="${user}" method="post" style="max-width:600px; margin:auto; margin-top:100px;">
             <div class="form-group">
                 <label for="fname">First Name</label>
                 <input type="text" class="form-control" th:field="*{firstName}" required id="fname" minlength="2" maxlength="20" placeholder="Enter First Name">
