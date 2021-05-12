@@ -32,4 +32,9 @@ public class UserService {
 
         return userRepository.findById(id).orElseThrow();
     }
+
+    public long getUserCount(){
+
+        return userRepository.count();
+    }
 }

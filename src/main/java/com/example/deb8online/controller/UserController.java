@@ -1,6 +1,7 @@
 package com.example.deb8online.controller;
 
 import com.example.deb8online.entity.User;
+import com.example.deb8online.repository.UserRepository;
 import com.example.deb8online.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private UserRepository userRepository;
 
     //********************** Renderar förstasidan index.html ***********************//
     @GetMapping("/")
@@ -29,12 +33,14 @@ public class UserController {
         return "signup";
     }
 
-    //************** Sparar ny användare och renderar succeded view ***************//
+    //********* Sparar ny användare och renderar succeded view med ett welcome message*********//
     @PostMapping("/process_registration")
     public String processRegistration(User user, Model model) {
         userService.saveUser(user);
 
-        model.addAttribute("welcomeMessage", "Welcome " + user.getFirstName());
+        model.addAttribute("welcomeMessage",
+                "Welcome " + user.getFirstName() +
+                ". You are member nr " + userService.getUserCount());
 
         return "registration_succeded";
     }
