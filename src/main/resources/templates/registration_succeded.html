@@ -10,8 +10,9 @@
 <body>
     <div class="container text-center">
         <div>
-            <h1>You are now registered</h1>
-            <h4><a th:href="@{/login}">Click here to login</a></h4>
+            <h1>Registration done!</h1>
+            <h3><p th:text="${welcomeMessage}"></p></h3>
+            <h4><a th:href="@{/}">Click here to login</a></h4>
         </div>
 
     </div>
