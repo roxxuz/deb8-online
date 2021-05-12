@@ -37,4 +37,11 @@ public class UserService {
 
         return userRepository.count();
     }
+
+    public boolean authUser(User userLoginAttempt){
+
+        User DBuser = userRepository.findByUserName(userLoginAttempt.getUserName());
+
+        return DBuser!= null && DBuser.getPassword().equals(userLoginAttempt.getPassword());
+    }
 }
