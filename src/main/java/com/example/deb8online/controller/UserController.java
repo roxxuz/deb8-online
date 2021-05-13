@@ -35,6 +35,7 @@ public class UserController {
     //********* Sparar ny användare och renderar succeded view med ett welcome message*********//
     @PostMapping("/process_registration")
     public String processRegistration(User user, Model model) {
+
         userService.saveUser(user);
 
         model.addAttribute("welcomeMessage",
@@ -56,7 +57,7 @@ public class UserController {
             return "index";
         }
     }
-
+    //******************** Huvudsidan för inloggad användare ***************************
     @GetMapping("/message_board/{id}")
     public String viewMessageBoard(@PathVariable Long id, Model model){
 
