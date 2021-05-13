@@ -14,6 +14,8 @@ public class UserService {
     private UserRepository userRepository;
 
     public void saveUser(User user){
+        //Sätter default profilbild
+        user.setImg("https://via.placeholder.com/150");
 
         userRepository.save(user);
     }
