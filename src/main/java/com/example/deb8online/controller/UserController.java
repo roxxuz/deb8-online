@@ -57,15 +57,4 @@ public class UserController {
             return "index";
         }
     }
-    //******************** Huvudsidan för inloggad användare ***************************
-    @GetMapping("/message_board/{id}")
-    public String viewMessageBoard(@PathVariable Long id, Model model){
-
-        User user = userService.getUserById(id);
-
-        model.addAttribute(user);
-
-        return "msg_board";
-    }
-
 }
