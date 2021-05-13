@@ -8,6 +8,24 @@
 </head>
 
 <body>
-    <h1>Message board for user</h1>
+    <div style="position:relative;min-width:960px">
+        <img th:src="@{${user.img}}" style="position: absolute;right:0;top:0" />
+    </div>
+    <p th:text="${user.userName}"></p>
+    <div class="container text-center">
+        <div>
+            <h1>Enter a message to join the debate</h1>
+        </div>
+        <div>
+
+            <form th:action="@{/send_message}" th:object="${message}" method="post" autocomplete="off" style="max-width:200px; margin:auto; margin-top:50px;">
+                <div class="form-group">
+                    <input type="text" class="form-control" th:field="*{text}" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Send message</button>
+            </form>
+        </div>
+
+    </div>
 </body>
 </html>
