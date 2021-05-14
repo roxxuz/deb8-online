@@ -18,7 +18,7 @@
         </div>
         <div>
 
-            <form th:action="@{/send_message}" th:object="${message}" method="post" autocomplete="off" style="max-width:200px; margin:auto; margin-top:50px;">
+            <form th:action="@{/save_message}" th:object="${message}" method="post" autocomplete="off" style="max-width:200px; margin:auto; margin-top:50px;">
                 <div class="form-group">
                     <input type="text" class="form-control" th:field="*{text}" required>
                 </div>
