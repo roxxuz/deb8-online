@@ -11,8 +11,8 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    //@Column(columnDefinition = "TIMESTAMP")
-    //private LocalDateTime dateTime;
+    @Column(columnDefinition = "TIMESTAMP")
+    private LocalDateTime dateTime;
 
     private String text;
     private String messageUserName;
@@ -29,13 +29,13 @@ public class Message {
         this.id = id;
     }
 
-    //public LocalDateTime getDateTime() {
-    //    return dateTime;
-    //}
+    public LocalDateTime getDateTime() {
+        return dateTime;
+    }
 
-    //public void setDateTime(LocalDateTime dateTime) {
-    //    this.dateTime = dateTime;
-    //}
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
+    }
 
     public String getText() {
         return text;
