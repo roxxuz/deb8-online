@@ -52,4 +52,12 @@ public class Message {
     public void setMessageUserId(long user_id) {
         this.messageUserId = user_id;
     }
+
+    public String getMessageUserName() {
+        return messageUserName;
+    }
+
+    public void setMessageUserName(String messageUserName) {
+        this.messageUserName = messageUserName;
+    }
 }
