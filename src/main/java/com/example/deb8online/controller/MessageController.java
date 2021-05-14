@@ -24,28 +24,21 @@ public class MessageController {
 
     //******************** Huvudsidan för inloggad användare ***************************
     @GetMapping("/message_board/{id}")
-    public String viewMessageBoard(@PathVariable Long id, Model model){
+    public String viewMessageBoard(@ModelAttribute("message") Message message, @PathVariable Long id, Model model){
 
         User user = userService.getUserById(id);
 
-        Message message = new Message();
+        // Message message = new Message();
 
         message.setMessageUserName(user.getUserName());
 
         model.addAttribute("user", user);
-        model.addAttribute("message", message);
 
-        System.out.println("--> INNAN HTML FORM - message.userName: " + message.getMessageUserName());
-        System.out.println("--> INNAN HTML FORM - message.text: " + message.getText());
-        System.out.println("=========================================");
         return "msg_board";
     }
 
     @PostMapping("/save_message")
-    public String saveMessage(@ModelAttribute Message message, User user){
-
-        System.out.println("--> EFTER HTML FORM - message.userName: " + message.getMessageUserName());
-        System.out.println("--> EFTER HTML FORM - message.text: " + message.getText());
+    public String saveMessage(Message message){
 
         messageService.saveMessage(message);
 
