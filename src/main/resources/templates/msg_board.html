@@ -22,6 +22,8 @@
                 <div class="form-group">
                     <input type="text" class="form-control" th:field="*{text}" required>
                 </div>
+                <input type="hidden" th:field="*{messageUserId}">
+                <input type="hidden" th:field="*{messageUserName}">
                 <button type="submit" class="btn btn-primary">Send message</button>
             </form>
         </div>
