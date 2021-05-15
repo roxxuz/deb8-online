@@ -6,6 +6,7 @@
     <title>deb8 Online</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"> -->
+    <link rel="stylesheet" th:href="@{/style.css}" />
 </head>
 
 <body style="font-size: 14px;">
@@ -36,11 +37,14 @@
         <p th:text="${message.text}" />
         <i><p th:text="${message.dateTime}" /></i>
 
-        <form th:action="@{/deleteMessage}" th:object="${user}" method="post">
+        <!-- OBS!!! Av någon anledning så kan inte två olika objekt ha samma fältnamn här.
+            Jag var tvungen att byta message.id till message.messageId för att inte både
+            User och Message skulle ha samma fältnamn för id. -->
+        <form th:action="@{/delete_message}" th:object="${user}" method="post">
             <input type="hidden" th:field="*{id}">
             <input type="hidden" th:value="${message.messageId}" name="messageId">
             <input type="hidden" th:value="${message.messageUserId}" name="messageUserId">
-            <input type="submit" value="delete">
+            <input type="submit" value="delete" id="button_to_link">
         </form>
         -------------------------------------------------
     </div>
