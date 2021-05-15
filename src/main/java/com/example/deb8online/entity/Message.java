@@ -15,6 +15,9 @@ public class Message {
     private LocalDateTime dateTime;
 
     private String text;
+
+    private long messageId;
+
     private String messageUserName;
     private long messageUserId;
 
@@ -59,5 +62,13 @@ public class Message {
 
     public void setMessageUserName(String messageUserName) {
         this.messageUserName = messageUserName;
+    }
+
+    public long getMessageId() {
+        return messageId;
+    }
+
+    public void setMessageId(long messageId) {
+        this.messageId = messageId;
     }
 }
