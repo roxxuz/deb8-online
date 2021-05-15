@@ -23,7 +23,7 @@ public class MessageController {
 
     //******************** Huvudsidan för inloggad användare ***************************
     @GetMapping("/message_board/{id}")
-    public String viewMessageBoard(@PathVariable Long id, Model model){
+    public String viewMessageBoard(@PathVariable("id") Long id, Model model){
 
         User user = userService.getUserById(id);
 
@@ -48,15 +48,18 @@ public class MessageController {
         return "redirect:/message_board/" + message.getMessageUserId();
     }
 
-    @PostMapping("/deleteMessage")
+    @PostMapping("/delete_message")
     public String deleteMessage(User user, Message message){
 
+        if(messageService.deleteMessage(message, user)){
+            System.out.println("---> Togs bort");
+            return "redirect:/message_board/" + user.getId();
 
-        System.out.println("Message ID: " + message.getMessageId());
-        System.out.println("Message user ID: " + message.getMessageUserId());
-        System.out.println("Logged in user name: " + user.getId());
-
-        return "redirect:/message_board/" + user.getId();
+        }
+        else{
+            
+            return "redirect:/message_board/" + user.getId();
+        }
     }
 
 }
