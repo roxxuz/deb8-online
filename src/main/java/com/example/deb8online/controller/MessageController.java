@@ -48,4 +48,15 @@ public class MessageController {
         return "redirect:/message_board/" + message.getMessageUserId();
     }
 
+    @PostMapping("/deleteMessage")
+    public String deleteMessage(User user, Message message){
+
+
+        System.out.println("Message ID: " + message.getMessageId());
+        System.out.println("Message user ID: " + message.getMessageUserId());
+        System.out.println("Logged in user name: " + user.getId());
+
+        return "redirect:/message_board/" + user.getId();
+    }
+
 }
