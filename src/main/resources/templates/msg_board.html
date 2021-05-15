@@ -35,6 +35,13 @@
         <b><p th:text="${message.messageUserName}" /></b>
         <p th:text="${message.text}" />
         <i><p th:text="${message.dateTime}" /></i>
+
+        <form th:action="@{/deleteMessage}" th:object="${user}" method="post">
+            <input type="hidden" th:field="*{id}">
+            <input type="hidden" th:value="${message.messageId}" name="messageId">
+            <input type="hidden" th:value="${message.messageUserId}" name="messageUserId">
+            <input type="submit" value="delete">
+        </form>
         -------------------------------------------------
     </div>
     <div class="card" style="width: 18rem;">
