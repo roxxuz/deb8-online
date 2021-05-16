@@ -22,8 +22,8 @@ public class MessageController {
 
 
     //******************** Huvudsidan för inloggad användare ***************************
-    @GetMapping("/message_board/{id}")
-    public String viewMessageBoard(@PathVariable("id") Long id, Model model){
+    @GetMapping("/message_board/{id}/{alert}")
+    public String viewMessageBoard(@PathVariable("id") Long id, @PathVariable("alert") String alert, Model model){
 
         User user = userService.getUserById(id);
 
@@ -37,7 +37,19 @@ public class MessageController {
 
         model.addAttribute("messages", messageService.getAllMessages());
 
+        model.addAttribute("alert_msg", alert);
+
         return "msg_board";
+    }
+
+    //**************** En redirect för när URLen saknar en andra variabel *******************
+    @GetMapping("/message_board/{id}")
+    public String messageBoardRedirect(@PathVariable long id){
+        //Eftersom URLen behöver en andra variabel (string) för att fungera
+        //så läggs den till här som "none"
+        //När den är "none" så visas inget popup meddelande i msg_board.html
+        String alert = "/none";
+        return "redirect:/message_board/" + id + alert;
     }
 
     @PostMapping("/save_message")
@@ -49,16 +61,18 @@ public class MessageController {
     }
 
     @PostMapping("/delete_message")
-    public String deleteMessage(User user, Message message){
+    public String deleteMessage(User user, Message message, Model model){
 
         if(messageService.deleteMessage(message, user)){
-            System.out.println("---> Togs bort");
+
             return "redirect:/message_board/" + user.getId();
 
         }
         else{
-            
-            return "redirect:/message_board/" + user.getId();
+            //Denna string kommer att visas i ett popup-fönster i msg_board.html
+            //med hjälp av javascript.
+            String alert = "You can only delete your own messages!";
+            return "redirect:/message_board/" + user.getId() + "/" + alert;
         }
     }
 
