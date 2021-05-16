@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>deb8 Online</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"> -->
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" th:href="@{/style.css}" />
 </head>
 
@@ -16,60 +16,54 @@
     <p th:text="${user.userName}"></p>
     <div class="container text-center">
         <div>
-            <h1>Enter a message to join the debate</h1>
+            <h1>d e b 8  O n l i n e</h1>
+            <h3>Today's debate is about plastic pollution</h3>
         </div>
         <div>
 
-            <form th:action="@{/save_message}" th:object="${message}" method="post" autocomplete="off" style="max-width:200px; margin:auto; margin-top:50px;">
+            <form th:action="@{/save_message}" th:object="${message}" method="post" autocomplete="off" style="max-width:500px; margin:auto; margin-top:50px;">
                 <div class="form-group">
-                    <input type="text" class="form-control" th:field="*{text}" required>
+                    <label>
+                        <textarea class="form-control" cols="40" rows="3" th:field="*{text}"></textarea>
+                    </label>
                 </div>
                 <input type="hidden" th:field="*{messageUserId}">
                 <input type="hidden" th:field="*{messageUserName}">
-                <button type="submit" class="btn btn-primary">Send message</button>
+                <button type="submit" class="btn btn-primary m-3">Send message</button>
             </form>
         </div>
 
     </div>
-    <div th:each="message: ${messages}">
-        -------------------------------------------------
-        <b><p th:text="${message.messageUserName}" /></b>
-        <p th:text="${message.text}" />
-        <i><p th:text="${message.dateTime}" /></i>
+    <div th:each="message: ${messages}" style="max-width:1000px; margin:auto;">
 
-        <!-- OBS!!! Av någon anledning så kan inte två olika objekt ha samma fältnamn här.
-            Jag var tvungen att byta message.id till message.messageId för att inte både
-            User och Message skulle ha samma fältnamn för id. -->
-        <form th:action="@{/delete_message}" th:object="${user}" method="post">
-            <input type="hidden" th:field="*{id}">
-            <input type="hidden" th:value="${message.messageId}" name="messageId">
-            <input type="hidden" th:value="${message.messageUserId}" name="messageUserId">
-            <input type="submit" value="delete" id="button_to_link">
-        </form>
-        -------------------------------------------------
-    </div>
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
+        <div class="card text-dark bg-light mb-4" style="border-radius: 5%">
+            <div class="card-header"><p th:text="${message.dateTime}" /></div>
+            <div class="card-body">
+                <h5 class="card-title"><p th:text="${message.messageUserName}" /></h5>
+                <p class="card-text" th:text="${message.text}" />
+
+                <!-- OBS!!! Av någon anledning så kan inte två olika objekt ha samma fältnamn här.
+                Jag var tvungen att byta message.id till message.messageId för att inte både
+                User och Message skulle ha samma fältnamn för id. -->
+            <div style="text-align: right;">
+                <form class="card-link" th:action="@{/delete_message}" th:object="${user}" method="post">
+                    <input type="hidden" th:field="*{id}">
+                    <input type="hidden" th:value="${message.messageId}" name="messageId">
+                    <input type="hidden" th:value="${message.messageUserId}" name="messageUserId">
+                    <input type="submit" value="delete" id="button_to_link">
+                </form>
+            </div>
         </div>
     </div>
-    <script>
-        window.onload = function() {
-            alert("You can only delete your own messages");
-        }
-    </script>
     <script th:inline="javascript">
 
-        var flag = [[${flag}]]; //Your Thymleaf variable
-        window.onload = function() {
-            if(!flag)
-                return; // Exit/Return if the variable is false
-            spreadLove(); // Call your favourite method if the variable is true
-        };
+        let alert_msg = [[${alert_msg}]];
+        if(alert_msg != "none"){
+            window.onload = function() {
+                alert(alert_msg);
+            }
+        }
+
 
     </script>
 </body>
