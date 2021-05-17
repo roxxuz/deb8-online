@@ -51,7 +51,7 @@ public class MessageService {
             message.setId(message.getMessageId());
 
             messageRepository.delete(message);
-            System.out.println("-> message id = " + message.getMessageId());
+
             return true;
         }
         else{
