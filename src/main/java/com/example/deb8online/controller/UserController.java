@@ -57,4 +57,11 @@ public class UserController {
             return "index";
         }
     }
+
+    @GetMapping("/editUser/{id}")
+    public String editUser(){
+
+
+        return "";
+    }
 }
