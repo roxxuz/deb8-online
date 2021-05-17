@@ -61,7 +61,7 @@ public class MessageController {
     }
 
     @PostMapping("/delete_message")
-    public String deleteMessage(User user, Message message, Model model){
+    public String deleteMessage(User user, Message message){
 
         if(messageService.deleteMessage(message, user)){
 
