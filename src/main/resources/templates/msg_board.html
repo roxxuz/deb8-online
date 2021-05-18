@@ -13,12 +13,14 @@
 <body style="font-size: 14px;">
 
 <div class="container" >
-    <div class="dropdown" style="position: fixed;right:15px;top:15px">
+    <div class="dropdown" style="position: fixed;right:20px;top:20px">
         <a href="#" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
             <img th:src="@{${user.img}}" id="user_menu_img"/>
         </a>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item" th:href="@{/edit_user/{id}(id=${user.id})}">Debate</a></li>
+            <li style="color: #da7f8f"><b><p th:text="${user.userName}"></p></b></li>
+            <li class="dropdown-divider"></li>
+            <li><a class="dropdown-item" th:href="@{/message_board/{id}(id=${user.id})}">Debate</a></li>
             <li><a class="dropdown-item" th:href="@{/user_settings/{id}(id=${user.id})}">Settings</a></li>
             <li class="dropdown-divider"></li>
             <li><a class="dropdown-item" th:href="@{/sign_out/{id}(id=${user.id})}">Sign Out</a></li>
@@ -26,7 +28,7 @@
     </div>
 </div>
 
-    <div class="container text-center">
+    <div class="container text-center mt-xl-5">
         <div>
             <h1>d e b 8  O n l i n e</h1>
             <h3>Today's debate is about plastic pollution</h3>
@@ -36,7 +38,7 @@
             <form th:action="@{/save_message}" th:object="${message}" method="post" autocomplete="off" style="max-width:500px; margin:auto; margin-top:50px;">
                 <div class="form-group">
                     <label>
-                        <textarea class="form-control" cols="40" rows="3" th:field="*{text}"></textarea>
+                        <textarea class="form-control" cols="40" rows="3" th:field="*{text}" placeholder="Type your message here..."></textarea>
                     </label>
                 </div>
                 <input type="hidden" th:field="*{messageUserId}">
@@ -46,13 +48,15 @@
         </div>
 
     </div>
-    <div th:each="message: ${messages}" style="max-width:1000px; margin:auto;">
+    <div th:each="message, iter: ${messages}" style="max-width:1000px; margin:auto;">
 
-        <div class="card text-dark bg-light mb-4" style="border-radius: 1%">
-            <div class="card-header"><p th:text="${message.dateTime}" /></div>
+        <div class="card text-dark bg-light mb-5">
+            <div class="card-header" th:style="${iter.count} % 2 == 0 ? 'background-color: #c5d1d8' : 'background-color: #d7e3ea'">
+                <p th:text="${message.dateTime}" /></div>
             <div class="card-body">
                 <h5 class="card-title"><p th:text="${message.messageUserName}" /></h5>
                 <p class="card-text" th:text="${message.text}" />
+
 
                 <!-- OBS!!! Av någon anledning så kan inte två olika objekt ha samma fältnamn här.
                 Jag var tvungen att byta message.id till message.messageId för att inte både
