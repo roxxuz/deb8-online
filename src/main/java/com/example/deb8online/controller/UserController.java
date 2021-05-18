@@ -64,4 +64,11 @@ public class UserController {
 
         return "";
     }
+
+    @GetMapping("/sign_out/{id}")
+    public String signOut(@PathVariable("id") long id){
+
+
+        return "redirect:/";
+    }
 }
