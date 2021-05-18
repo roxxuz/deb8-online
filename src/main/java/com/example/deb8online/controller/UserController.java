@@ -58,11 +58,14 @@ public class UserController {
         }
     }
 
-    @GetMapping("/editUser/{id}")
-    public String editUser(){
+    @GetMapping("/user_settings/{id}")
+    public String editUser(@PathVariable("id") long id, Model model){
 
+        User user = userService.getUserById(id);
 
-        return "";
+        model.addAttribute("user", user);
+
+        return "edit_user";
     }
 
     @GetMapping("/sign_out/{id}")
