@@ -61,7 +61,9 @@
 
             <button type="submit" class="btn btn-primary mt-3">Save Settings</button>
         </form>
+        <a class="btn btn-danger mt-3" th:href="@{/delete_user/{id}(id=${user.id})}">Delete User</a>
     </div>
+
     <div th:unless="${msg} == 'none'" class="alert alert-success mt-3 below_centered">
         <p th:text="${msg}" class="mb-0" />
     </div>
