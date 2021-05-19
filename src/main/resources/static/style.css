@@ -3,16 +3,23 @@ body {
 }
 
 .centered{
-    position: fixed;
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
+.below_centered{
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .btn-primary, .btn-primary:active, .btn-primary:visited {
-    background-color: #c5d1d8 !important;
-    border-color: #c5d1d8 !important;
-    outline-color: #c5d1d8 !important;
+    background-color: #eff0f6 !important;
+    border-color: #da7f8f !important;
+    outline-color: #eff0f6 !important;
     color: black !important;
 }
 
@@ -53,6 +60,15 @@ body {
     object-fit: cover;
     width: 100px;
     height: 100px;
+    border-radius: 50%;
+    border: 2px solid #da7f8f;
+    padding: 5px;
+}
+
+#user_msg_img {
+    object-fit: cover;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     border: 2px solid #da7f8f;
     padding: 5px;
