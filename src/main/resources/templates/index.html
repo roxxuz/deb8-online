@@ -28,10 +28,12 @@
             </div>
             <button type="submit" class="btn btn-primary mt-3">Sign In</button>
         </form>
-        <h2><p class="text-danger" th:text="${msg}"></p></h2>
         <div>
             <h5><a class="btn btn-primary mt-3" th:href="@{/register}">New User?</a></h5>
         </div>
+    </div>
+    <div th:unless="${msg} == 'none'" class="alert alert-danger mt-3 below_centered">
+        <p th:text="${msg}" class="mb-0" />
     </div>
 
 </div>
