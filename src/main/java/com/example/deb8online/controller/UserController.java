@@ -18,11 +18,17 @@ public class UserController {
     private UserService userService;
 
     //********************** Renderar förstasidan index.html ***********************//
-    @GetMapping("/")
-    public String viewIndex(Model model){
+    @GetMapping("/{msg}")
+    public String viewIndex(@PathVariable("msg") String msg, Model model){
         model.addAttribute("user", new User());
-        model.addAttribute("msg", "none");
+        model.addAttribute("msg",msg);
         return "index";
+    }
+
+    //**********Redirect om sidan besökt utan någon message***********************
+    @GetMapping("/")
+    public String viewIndexRedirect(){
+        return "redirect:/none";
     }
 
     //************** Renderar signup.html och skickar med nyskapat user objekt ***************//
@@ -47,7 +53,7 @@ public class UserController {
 
     //************* Kontrollerar användarnamn och lösenord mot databasen *************//
     @PostMapping("/process_login")
-    public String process_login(User user, Model model){
+    public String processLogin(User user, Model model){
 
         if(userService.authUser(user)){
             return "redirect:/message_board/" + userService.getUserByUserName(user.getUserName()).getId();
@@ -92,5 +98,12 @@ public class UserController {
         String msg = "Settings updated!";
 
         return "redirect:/user_settings/" + user.getId() + "/" + msg;
+    }
+
+    @GetMapping("/delete_user/{id}")
+    public String deleteUser(@PathVariable("id") long id){
+
+        String msg = "User deleted. Bye bye!";
+        return "redirect:/" + msg;
     }
 }
