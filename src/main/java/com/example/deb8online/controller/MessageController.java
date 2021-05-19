@@ -39,6 +39,10 @@ public class MessageController {
 
         model.addAttribute("alert_msg", alert);
 
+        model.addAttribute("userService", userService);
+
+        String hej = userService.getUserByUserName(message.getMessageUserName()).getImg();
+
         return "msg_board";
     }
 
@@ -48,8 +52,8 @@ public class MessageController {
         //Eftersom URLen behöver en andra variabel (string) för att fungera
         //så läggs den till här som "none"
         //När den är "none" så visas inget popup meddelande i msg_board.html
-        String alert = "/none";
-        return "redirect:/message_board/" + id + alert;
+        String alert = "none";
+        return "redirect:/message_board/" + id + "/" + alert;
     }
 
     @PostMapping("/save_message")
