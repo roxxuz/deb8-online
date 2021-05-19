@@ -21,7 +21,7 @@ public class UserController {
     @GetMapping("/")
     public String viewIndex(Model model){
         model.addAttribute("user", new User());
-
+        model.addAttribute("msg", "none");
         return "index";
     }
 
@@ -58,14 +58,23 @@ public class UserController {
         }
     }
 
-    @GetMapping("/user_settings/{id}")
-    public String editUser(@PathVariable("id") long id, Model model){
+    @GetMapping("/user_settings/{id}/{msg}")
+    public String editUser(@PathVariable("id") long id, @PathVariable("msg") String msg, Model model){
 
         User user = userService.getUserById(id);
 
         model.addAttribute("user", user);
+        model.addAttribute("msg", msg);
 
         return "edit_user";
+    }
+
+    @GetMapping("/user_settings/{id}")
+    public String editUserRedirect(@PathVariable long id){
+        //Om user_settings besökts med endast användar-id så sätts msg till "none"
+        //och inget meddelande visas då i (Thymeleaf if-satsen) i edit_user.html
+        String msg = "none";
+        return "redirect:/user_settings/" + id + "/" + msg;
     }
 
     @GetMapping("/sign_out/{id}")
@@ -73,5 +82,15 @@ public class UserController {
 
 
         return "redirect:/";
+    }
+
+    @PostMapping("/update_user")
+    public String updateUser(User user){
+
+        userService.updateUser(user);
+
+        String msg = "Settings updated!";
+
+        return "redirect:/user_settings/" + user.getId() + "/" + msg;
     }
 }
