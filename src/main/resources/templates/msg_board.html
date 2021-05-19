@@ -43,7 +43,7 @@
                 </div>
                 <input type="hidden" th:field="*{messageUserId}">
                 <input type="hidden" th:field="*{messageUserName}">
-                <button type="submit" class="btn btn-primary m-3">Send message</button>
+                <button type="submit" class="btn btn-primary m-3"><strong>Send message</strong></button>
             </form>
         </div>
 
@@ -51,9 +51,13 @@
     <div th:each="message, iter: ${messages}" style="max-width:1000px; margin:auto;">
 
         <div class="card text-dark bg-light mb-5">
-            <div class="card-header" th:style="${iter.count} % 2 == 0 ? 'background-color: #c5d1d8' : 'background-color: #d7e3ea'">
-                <p th:text="${message.dateTime}" /></div>
+            <div class="card-header" th:style="${iter.count} % 2 == 0 ? 'background-color: #eff0f6' : 'background-color: #d7e3ea'">
+                <p th:text="${message.dateTime}" />
+            </div>
             <div class="card-body">
+
+                <img th:src="@{${userService.getUserByUserName(message.getMessageUserName()).getImg()}}" id="user_msg_img"/>
+
                 <h5 class="card-title"><p th:text="${message.messageUserName}" /></h5>
                 <p class="card-text" th:text="${message.text}" />
 
