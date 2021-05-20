@@ -15,7 +15,7 @@ public class UserService {
 
     public void saveUser(User user){
         //Sätter default profilbild
-        user.setImg("https://i.pinimg.com/564x/d9/56/9b/d9569bbed4393e2ceb1af7ba64fdf86a.jpg");
+        user.setImg("https://process.filepicker.io/APHE465sSbqvbOIStdwTyz/rotate=deg:exif/resize=fit:crop,height:566,width:944/output=quality:80,compress:true,strip:true,format:jpg/cache=expiry:max/https://cdn.filestackcontent.com/CfgaGL9xQ826bsO1rWq0");
 
         userRepository.save(user);
     }
