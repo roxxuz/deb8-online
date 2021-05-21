@@ -72,7 +72,7 @@
                     <input type="hidden" th:field="*{id}">
                     <input type="hidden" th:value="${message.messageId}" name="messageId">
                     <input type="hidden" th:value="${message.messageUserId}" name="messageUserId">
-                    <input type="submit" value="delete" id="button_to_link">
+                    <input type="image" name="submit" th:src="@{/images/trash-can.png}" alt="Submit" style="width: 30px;" />
                 </form>
             </div>
         </div>
