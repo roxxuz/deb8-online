@@ -23,10 +23,10 @@ This is a school project using Java Spring Boot to create a  web application for
   * Spring MySQL driver
 
  #### Languages used
-    * Java
-    * HTML
-    * CSS
-    * Javascript
+  * Java
+  * HTML
+  * CSS
+  * Javascript
 
  #### Run instructions
   * Clone repository to local folder
