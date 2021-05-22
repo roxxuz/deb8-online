@@ -8,13 +8,13 @@
 
 This is a school project using Java Spring Boot to create a  web application for online debate.
 
-* ####Java v.11
+ #### Java v.11
 
-* ####Apache Maven
+ #### Apache Maven
 
-* ####MySQL
+ #### MySQL
 
-* ####Dependencies
+ #### Dependencies
   * Spring Boot
   * Spring MVC
   * Spring JPA
@@ -22,13 +22,13 @@ This is a school project using Java Spring Boot to create a  web application for
   * Thymeleaf
   * Spring MySQL driver
 
-* ####Languages used
-    * Java
-    * HTML
-    * CSS
-    * Javascript
+ #### Languages used
+  * Java
+  * HTML
+  * CSS
+  * Javascript
 
-* ####Run instructions
+ #### Run instructions
   * Clone repository to local folder
   * Setup a MySQL server and create a new database
   * Open the project in IntelliJ (or IDE you prefer)
