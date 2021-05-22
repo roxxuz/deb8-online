@@ -6,15 +6,32 @@
  `-'`-`--''`-'  `-'        `-' '  `-`--' `-'  `-`--'
 </pre>
 
-This is a school project where I will use HTML, CSS, Javascript, and Java with Spring Boot
-to create a web page / web application for online debate.
+This is a school project using Java Spring Boot to create a  web application for online debate.
 
-###Dependencies
-* Spring Boot
-* Spring MVC
-* Spring JPA
-* Spring Web
-* Thymeleaf
-* Maven
-* Spring MySQL driver
-* MySQL server
+* ####Java v.11
+
+* ####Apache Maven
+
+* ####MySQL
+
+* ####Dependencies
+  * Spring Boot
+  * Spring MVC
+  * Spring JPA
+  * Spring Web
+  * Thymeleaf
+  * Spring MySQL driver
+
+* ####Languages used
+    * Java
+    * HTML
+    * CSS
+    * Javascript
+
+* ####Run instructions
+  * Clone repository to local folder
+  * Setup a MySQL server and create a new database
+  * Open the project in IntelliJ (or IDE you prefer)
+  * In *"src/main/resources/application.properties"* edit *"localhost:8080/yourDataBase"* and *username/password*
+  * Run the application
+  * DONE! Visit "localhost:8080" in your web browser
