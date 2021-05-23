@@ -38,6 +38,9 @@
             <button type="submit" class="btn btn-primary mt-3 form-width">Register</button>
         </form>
     </div>
+    <div th:unless="${msg} == 'none'" class="alert alert-danger mt-3 below_centered">
+        <p th:text="${msg}" class="mb-0" />
+    </div>
 </div>
 </body>
 </html>

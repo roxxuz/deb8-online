@@ -25,30 +25,45 @@ public class UserController {
         return "index";
     }
 
-    //**********Redirect om sidan besökt utan någon message***********************
+    //**********Redirect om sidan besöks utan något message***********************
     @GetMapping("/")
     public String viewIndexRedirect(){
         return "redirect:/none";
     }
 
     //************** Renderar signup.html och skickar med nyskapat user objekt ***************//
-    @GetMapping("/register")
-    public String registerNewUser(Model model) {
+    @GetMapping("/register/{msg}")
+    public String registerNewUser(@PathVariable("msg") String msg, Model model) {
         model.addAttribute("user", new User());
+        model.addAttribute("msg",msg);
         return "signup";
+    }
+
+    @GetMapping("/register")
+    public String registerNewUserRedirect(){
+        return "redirect:/register/none";
     }
 
     //********* Sparar ny användare och renderar succeded view med ett welcome message*********//
     @PostMapping("/process_registration")
     public String processRegistration(User user, Model model) {
 
-        userService.saveUser(user);
+        //Kontrollerar så att inte användaren redan finns i databasen
+        //Om användaren inte finns så kommer getUserByUserName att returnera null och if-satsen körs
+        if(userService.getUserByUserName(user.getUserName()) == null) {
 
-        model.addAttribute("welcomeMessage",
-                "Welcome " + user.getFirstName() +
-                ". You are member nr " + userService.getUserCount());
+            userService.saveUser(user);
 
-        return "registration_succeded";
+            model.addAttribute("welcomeMessage",
+                    "Welcome " + user.getFirstName() +
+                            ". You are member nr " + userService.getUserCount());
+
+            return "registration_succeded";
+        }
+        else{
+            String msg = "This username is not available";
+            return "redirect:/register/" + msg;
+        }
     }
 
     //************* Kontrollerar användarnamn och lösenord mot databasen *************//
