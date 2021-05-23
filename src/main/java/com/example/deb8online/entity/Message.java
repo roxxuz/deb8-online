@@ -32,11 +32,16 @@ public class Message {
         this.id = id;
     }
 
-    public LocalDateTime getDateTime() {
+    public String getDateTime() {
+        // Tar bort det 'T' som uppstår mellan datum och tiden innan return
+        String dateTime = this.dateTime.toString();
+        dateTime = dateTime.replace('T', ' ');
+
         return dateTime;
     }
 
     public void setDateTime(LocalDateTime dateTime) {
+
         this.dateTime = dateTime;
     }
 
