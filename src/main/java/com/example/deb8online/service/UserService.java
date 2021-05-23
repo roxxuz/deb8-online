@@ -15,7 +15,7 @@ public class UserService {
 
     public void saveUser(User user){
         //Sätter default profilbild
-        user.setImg("https://process.filepicker.io/APHE465sSbqvbOIStdwTyz/rotate=deg:exif/resize=fit:crop,height:566,width:944/output=quality:80,compress:true,strip:true,format:jpg/cache=expiry:max/https://cdn.filestackcontent.com/CfgaGL9xQ826bsO1rWq0");
+        user.setImg("https://agiltec.se/wp-content/uploads/blank-profile-picture-973460_640.png");
 
         userRepository.save(user);
     }
